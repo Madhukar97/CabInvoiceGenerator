@@ -39,14 +39,14 @@ public class CabInvoiceGenerator {
 
     public InvoiceSummary listOfRidesOfUniqueUserId(Ride[] ridesArray, String userID) {
         double totalFare = 0;
-        int userCount=0;
+        int userRideCount=0;
         for (Ride ride : ridesArray){
             if (ride.getUserID().equals(userID)){
                 totalFare+= this.calculateFare(ride.distance,ride.time);
-                userCount++;
+                userRideCount++;
             }
         }
-        return new InvoiceSummary(userCount,totalFare);
+        return new InvoiceSummary(userRideCount,totalFare);
     }
 }
 
