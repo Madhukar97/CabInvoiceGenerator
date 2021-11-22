@@ -2,11 +2,13 @@ public class Ride {
     int distance;
     int time;
     String userID;
+    CabInvoiceGenerator.RideType rideType;
 
-    public Ride(String userID, int distance, int time) {
+    public Ride(String userID, int distance, int time, CabInvoiceGenerator.RideType variable) {
         this.userID = userID;
         this.distance = distance;
         this.time = time;
+        this.rideType = variable;
     }
 
     public int getDistance() {
