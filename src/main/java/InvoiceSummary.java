@@ -3,7 +3,7 @@ import java.util.Objects;
 public class InvoiceSummary {
     private final int numOfRides;
     private final double totalFare;
-    private final Object average;
+    final Object average;
 
     public InvoiceSummary(int numOfRides, double totalFare) {
         this.numOfRides = numOfRides;

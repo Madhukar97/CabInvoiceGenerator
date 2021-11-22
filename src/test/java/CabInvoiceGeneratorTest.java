@@ -18,21 +18,33 @@ public class CabInvoiceGeneratorTest {
 
     @Test
     public void whenGivenMultipleFaresShouldReturnAggregateTotalFare() {
-        Ride[] ridesArray = {new Ride(2, 20),
-                new Ride(4, 10),
-                new Ride(10, 30)};
+        Ride[] ridesArray = {new Ride("1",2, 20),
+                new Ride("1",4, 10),
+                new Ride("2",10, 30)};
         Assert.assertEquals(220, fare.calculateFareForMultipleRides(ridesArray), 0.0);
     }
 
     @Test
     public void givenDistanceAndTimeWhenAddedShouldReturnInvoiceSummary() {
         Ride[] rides = {
-                new Ride(2, 5),
-                new Ride(3, 5),
-                new Ride(1, 1)
+                new Ride("1",2, 5),
+                new Ride("2",3, 5),
+                new Ride("1",1, 1)
         };
         InvoiceSummary invoiceSummary = fare.invoiceSummaryCalculation(rides);
         InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3, 71);
+        Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
+    }
+
+    @Test
+    public void givenUserIdDistanceAndTimeShouldReturnInvoiceOfUser() {
+        Ride[] rides = {
+                new Ride("1",2, 5),
+                new Ride("2",3, 5),
+                new Ride("1",1, 1)
+        };
+        InvoiceSummary invoiceSummary = fare.listOfRidesOfUniqueUserId(rides,"1");
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 36);
         Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
     }
 }
